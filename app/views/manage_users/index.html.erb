@@ -1,0 +1,51 @@
+
+<% if user_signed_in? and current_user.admin? %> 
+  <%= link_to "Add new user", new_user_url %> <br>
+<% elsif not user_signed_in? %>
+  <%= button_to "Sign up and try the site!", new_user_registration_path, method: :get, class: 'button-signup' %>
+<% end %>
+
+<h3>Listing All Users</h3>
+
+<%= will_paginate @users, class: "pagin" %>
+
+<table>
+  <thead>
+    <tr>
+      <th> user image </th>
+      <th> Name </th>
+      <% if user_signed_in? and current_user.admin? %>
+        <th> admin? </th>
+        <th> manage </th>
+        <th> email </th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <% if user.admin? %>
+        <tr class="line-admin">
+      <% else %>
+        <tr class="<%= cycle('line-odd','line-even') %>">
+      <% end %>
+        <td class='img-cell'> <%= image_tag user.image_url, class: "user-image" %></td>
+        <td><%= user.name %></td>
+        <% if user_signed_in? and current_user.admin? %>
+          <td><%= user.admin? %></td>
+          <td class='line-admin'>
+            <%= link_to "edit", edit_user_path(id: user) %> <br>
+            <%= link_to "delete", delete_user_path(id: user), method: :delete, data: {confirm: "Are you sure?"} %>
+          </td>
+          <td>
+            <%= user.email %> 
+          </td>
+        <% end %>
+        </td>
+      </tr>
+
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @users, class: "pagin" %>
