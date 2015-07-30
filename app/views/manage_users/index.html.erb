@@ -34,6 +34,7 @@
         <% if user_signed_in? and current_user.admin? %>
           <td><%= user.admin? %></td>
           <td class='line-admin'>
+            <!-- <%#= link_to "download image", user.image_url %> <br> -->
             <%= link_to "edit", edit_user_path(id: user) %> <br>
             <%= link_to "delete", delete_user_path(id: user), method: :delete, data: {confirm: "Are you sure?"} %>
           </td>
