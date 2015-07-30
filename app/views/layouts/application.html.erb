@@ -20,7 +20,7 @@
 					<% if user_signed_in? %>
 						<li><%= link_to "My Account", edit_user_registration_path %></li>
 						<li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-						<li><%= image_tag current_user.remote_image_url, class: "user-image" if current_user %></li>
+						<li><%= image_tag current_user.image_url, class: "user-image" if current_user %></li>
 					<% else %>
 						<li><%= link_to "Log in", new_user_session_path %></li>
 					<% end %>
@@ -30,7 +30,7 @@
 	
 		<div class="container">
 			<div id='info-bar'> 
-				<%= [current_user.name, current_user.admin? ? 'admin' : 'user'] if current_user %>
+				<%= [current_user.id, current_user.name, current_user.admin? ? 'admin' : 'user'] if current_user %>
 
 			<% flash.each do |name, message| %>
 				<% message = "You are already logged in. Log out first please..." if message=="You are already signed in." %>

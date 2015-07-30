@@ -1,3 +1,4 @@
+<%= image_tag @user.image_url, class: "catalog-image" %>
 
 <h2>Edit User Account of "<%= @user.name %>" </h2>
   <% if @user.errors.any? %>
@@ -19,14 +20,11 @@
     <%= f.text_field :name, autofocus: true %>
   </div>
 
-  <div class="field">
-    <%= f.label :remote_image_url, "Image url" %><br />
-    <%= f.text_field :remote_image_url, autofocus: true, placeholder: "optional" %>
-  </div>
+
 
   <div class="field">
-    <%= f.label :image, "or upload image" %>
-    <%= f.file_field :image, placeholder: "optional" %>
+    <%= f.label :image, "Upload image (optional)" %>
+    <%= f.file_field :image %>
   </div>
 
   <div class="field">
