@@ -16,6 +16,7 @@
   <%= @lab.college %>
 </p>
 
+<h3> Documents posted for this class / lab </h3>
 <% @lab.documents.each do |document| %>
-	<%= link_to document.name, document.doc_file.url %>
+	<%= link_to document.name, document.doc_file.url %> <br><br>
 <% end %>

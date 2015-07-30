@@ -11,7 +11,7 @@
 <body>
 	<header class="navbar navbar-fixed-top navbar-inverse">
 		<div class="container"> 
-			<%= link_to "App 0", root_url, id:'logo' %>
+			<%= link_to "E.Atilgan's", root_url, id:'logo' %>
 			<%= link_to "Manage Users", users_path, id:'catalog-logo' if user_signed_in? and current_user.admin? %>
 			<%#= link_to "All Users", users_path, id:'cart-logo' %>
 			<nav>
@@ -30,13 +30,14 @@
 	
 		<div class="container">
 			<div id='info-bar'> 
+				<span id='welcome'> <%= link_to "| Classes / Labs |", labs_url %> </span>
 				<%= [current_user.id, current_user.name, current_user.admin? ? 'admin' : 'user'] if current_user %>
 
 			<% flash.each do |name, message| %>
 				<% message = "You are already logged in. Log out first please..." if message=="You are already signed in." %>
 				<% message = "Loged in successfully..." if message=="Signed in successfully." %>
 				<% message = "Loged out successfully..." if message=="Signed out successfully." %>
-				<div class="<%= name %>"><small><%= name.capitalize %></small>: <%= message %> </div>
+				<div class="<%= name %>"><%= message %> </div>
 			<% end %>
 			</div>
 		</div>
