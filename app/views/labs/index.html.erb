@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% if current_user.admin? %>
+  <%= link_to 'New Lab', new_lab_path %>
+<% end %>
 
 <h1>Listing Labs</h1>
 
@@ -14,11 +16,13 @@
   <tbody>
     <% @labs.each do |lab| %>
       <tr>
-        <td><%= lab.name %></td>
+        <td><%= link_to lab.name, lab %></td>
         <td><%= lab.college %></td>
-        <td><%= link_to 'Show', lab %></td>
-        <td><%= link_to 'Edit', edit_lab_path(lab) %></td>
-        <td><%= link_to 'Destroy', lab, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.admin? %>
+          <td><%= link_to 'Show', lab %></td>
+          <td><%= link_to 'Edit', edit_lab_path(lab) %></td>
+          <td><%= link_to 'Destroy', lab, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +30,3 @@
 
 <br>
 
-<%= link_to 'New Lab', new_lab_path %>

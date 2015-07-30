@@ -1,5 +1,5 @@
 class LabsController < ApplicationController
-  before_action :bounce_non_admin_user
+  before_action :bounce_non_admin_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :bounce_non_logged_in_user
   before_action :set_lab, only: [:show, :edit, :update, :destroy]
 

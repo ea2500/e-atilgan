@@ -1,12 +1,14 @@
+
+<h1>Welcome to App 0</h1>
+
 <% if user_signed_in? %>
-	<p><%= current_user.name %> is here working </p>
+	<p>Go to classes and find your class or lab, <%= current_user.name %> ... </p>
 <% else %>
 	<%= button_to "Sign up here", new_user_registration_path, method: :get, class: 'button-signup' %> 
 <% end %>
 
-<h1>Welcome to App 0</h1>
 
-<%= link_to "documents", documents_url %>
+<%= link_to "documents", documents_url if user_signed_in? and current_user.admin? %>
 
 
 <br>

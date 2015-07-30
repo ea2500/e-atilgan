@@ -1,4 +1,10 @@
-<p id="notice"><%= notice %></p>
+
+<% if current_user.admin? %>
+	<%= link_to 'Edit', edit_lab_path(@lab) %> |
+	<%= link_to 'Back', labs_path %>
+	<br>
+<% end %>
+
 
 <p>
   <strong>Name:</strong>
@@ -10,5 +16,6 @@
   <%= @lab.college %>
 </p>
 
-<%= link_to 'Edit', edit_lab_path(@lab) %> |
-<%= link_to 'Back', labs_path %>
+<% @lab.documents.each do |document| %>
+	<%= link_to document.name, document.doc_file.url %>
+<% end %>
