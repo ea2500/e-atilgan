@@ -41,6 +41,11 @@
           <td>
             <%= user.email %> 
           </td>
+          <td>
+            <% user.user_labs.each do |usrlab| %>
+              <%= usrlab.lab.name %> <br>
+            <% end %>
+          </td>
         <% end %>
         </td>
       </tr>

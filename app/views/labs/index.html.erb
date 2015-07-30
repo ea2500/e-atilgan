@@ -2,7 +2,7 @@
   <%= link_to 'New Lab', new_lab_path %>
 <% end %>
 
-<h1>Listing Labs</h1>
+<h1>Listing Classes / Labs</h1>
 
 <table>
   <thead>
@@ -18,6 +18,11 @@
       <tr>
         <td><%= link_to lab.name, lab %></td>
         <td><%= lab.college %></td>
+        <% if not current_user.user_labs.find_by(lab_id: lab.id) %>
+          <td><%= button_to "subscribe", user_labs_url(lab_id: lab.id) %> </td>
+        <% else %>
+          <td><%= link_to 'un-subscribe', user_lab_url(id: lab.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
         <% if current_user.admin? %>
           <td><%= link_to 'Show', lab %></td>
           <td><%= link_to 'Edit', edit_lab_path(lab) %></td>

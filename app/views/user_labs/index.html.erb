@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing User Labs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Lab</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_labs.each do |user_lab| %>
+      <tr>
+        <td><%= user_lab.user.name %></td>
+        <td><%= user_lab.lab.name %></td>
+        <!-- <td><%#= link_to 'Show', user_lab %></td> -->
+        <!-- <td><%#= link_to 'Edit', edit_user_lab_path(user_lab) %></td> -->
+        <td><%= link_to 'Destroy', user_lab_url(id: user_lab), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%#= link_to 'New User lab', new_user_lab_path %>

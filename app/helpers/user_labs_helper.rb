@@ -1,0 +1,2 @@
+module UserLabsHelper
+end

@@ -7,9 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-# restaurant = Restaurant.create!(name: "McDonald's")
-# restaurant.logo = Rails.root.join("db/images/mcdonalds_logo.png").open
-# restaurant.save!
+Lab.create!(name: "Conceptual Pysics, Phys 101", college: "Eatwick College")
+Lab.create!(name: "Inroduction to Astronomy, Astr 201", college: "Manhattan College")
+Lab.create!(name: "Basic Electronics, Phys XXX", college: "Fairleigh Dickinson University")
+
 
 user = User.create!(name:  "Jim Admin",
              email: "jim@jim.com",
@@ -41,5 +42,10 @@ user.save!
               confirmed_at: Time.zone.now)
   img = "face#{rand(1..18)}.JPG"
   user.image = Rails.root.join("db/images/"+img).open
+  
+  lab = Lab.find(rand(1..3))
+  user.user_labs.create(lab: lab)
   user.save!
+
 end
+

@@ -6,17 +6,21 @@
 <% end %>
 
 
-<p>
-  <strong>Name:</strong>
+<h3>
+  <!-- <strong>Name:</strong> -->
   <%= @lab.name %>
-</p>
+</h3>
 
-<p>
-  <strong>College:</strong>
+<h4>
+  <!-- <strong>College:</strong> -->
   <%= @lab.college %>
-</p>
+</h4>
 
 <h3> Documents posted for this class / lab </h3>
-<% @lab.documents.each do |document| %>
-	<%= link_to document.name, document.doc_file.url %> <br><br>
+<% if @lab.documents.count == 0 %>
+	<p>currently none</p>
+<% else %>
+	<% @lab.documents.each do |document| %>
+		<%= link_to document.name, document.doc_file.url %> <br><br>
+	<% end %>
 <% end %>

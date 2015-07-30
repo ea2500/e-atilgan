@@ -30,8 +30,8 @@
 	
 		<div class="container">
 			<div id='info-bar'> 
-				<span id='welcome'> <%= link_to "| Classes / Labs |", labs_url %> </span>
-				<%= [current_user.id, current_user.name, current_user.admin? ? 'admin' : 'user'] if current_user %>
+				<span id='welcome'> <%= link_to "| Classe/Lab Subscriptions |", labs_url %> </span>
+				<%= current_user.name if current_user %>
 
 			<% flash.each do |name, message| %>
 				<% message = "You are already logged in. Log out first please..." if message=="You are already signed in." %>

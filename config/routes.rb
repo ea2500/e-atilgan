@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :user_labs, only: [:index, :create, :destroy]
   resources :labs
   resources :documents
   delete '/delete_user' => 'manage_users#destroy'

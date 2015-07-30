@@ -1,18 +1,42 @@
 
-<h1>Instructor Erdinc Atilgan's Site</h1>
 
-<p> This page is designed to facilitate my connectivity with my students</p>
+
+<%= link_to "documents", documents_url if user_signed_in? and current_user.admin? %>
+<br>
+<%= link_to "subscriptions", user_labs_url if user_signed_in? and current_user.admin? %>
+
+
+<br>
+
+
+
+<h1>Weclome Students... </h1>
+
+<p> This page is designed to facilitate the connectivity of Erdinc Atilgan, Ph.D., with his students</p>
 
 <% if user_signed_in? %>
-	<p>Go to classes and find your class or lab, <%= current_user.name %> ... </p>
+	
+	<p>Hi <%= current_user.name %>. Please use <%= link_to "| Classes / Labs |", labs_url %> link to find your class or lab </p>
+
+<h3> You subscribed to email list of following: </h3>
+	<% if current_user.user_labs.count > 0 %>
+	<table>
+	  <tbody>
+	    <% current_user.user_labs.each do |user_lab| %>
+	      <tr>
+	        <td><%= link_to user_lab.lab.name, user_lab.lab %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+	<% else %>
+		no subscriptions 
+	<% end %>
+
 <% else %>
 	<%= button_to "Students, sign up here", new_user_registration_path, method: :get, class: 'button-signup' %> 
 <% end %>
 
 
-<%= link_to "documents", documents_url if user_signed_in? and current_user.admin? %>
 
 
-<br>
-
-<%= link_to "classes", labs_url %>

@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
+  has_many :user_labs, dependent: :destroy
+
 end
