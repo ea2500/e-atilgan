@@ -39,7 +39,7 @@ user.save!
               password:              'password' ,
               password_confirmation: 'password' ,
               confirmed_at: Time.zone.now)
-  img = "face#{rand(1..10)}.JPG"
+  img = "face#{rand(1..18)}.JPG"
   user.image = Rails.root.join("db/images/"+img).open
   user.save!
 end
