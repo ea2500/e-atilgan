@@ -16,7 +16,7 @@
 
 <% if user_signed_in? %>
 	
-	<p>Hi <%= current_user.name %>. Please use <%= link_to "| Classes / Labs |", labs_url %> link to find your class or lab </p>
+	<p>Hi <%= current_user.name %>. Please use <%= link_to "| Class/Lab Subscriptions |", labs_url %> link to find your class or lab </p>
 
 <h3> You subscribed to email list of following: </h3>
 	<% if current_user.user_labs.count > 0 %>
