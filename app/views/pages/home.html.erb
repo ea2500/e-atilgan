@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
 	<p><%= current_user.name %> is here working </p>
 <% else %>
-	<%= button_to "Sign up and try the site!", new_user_registration_path, method: :get, class: 'button-signup' %> 
+	<%= button_to "Sign up here", new_user_registration_path, method: :get, class: 'button-signup' %> 
 <% end %>
 
 <h1>Welcome to App 0</h1>

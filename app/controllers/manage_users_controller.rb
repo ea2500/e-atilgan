@@ -58,14 +58,14 @@ class ManageUsersController < ApplicationController
 
   	def user_params_for_edit
       if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
-        params.require(:user).permit(:name, :email, :image_url, :admin)
+        params.require(:user).permit(:name, :email, :remote_image_url, :admin)
       else
-        params.require(:user).permit(:name, :email, :image_url, :password, :password_confirmation, :admin)
+        params.require(:user).permit(:name, :email, :remote_image_url, :password, :password_confirmation, :admin)
       end
     end
 
     def user_params_for_new
-      params.require(:user).permit(:name, :email, :image_url, :password, :password_confirmation, :admin)
+      params.require(:user).permit(:name, :email, :remote_image_url, :password, :password_confirmation, :admin)
     end
 
     def bounce_incorrect_user

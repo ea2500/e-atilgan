@@ -20,7 +20,7 @@
 					<% if user_signed_in? %>
 						<li><%= link_to "My Account", edit_user_registration_path %></li>
 						<li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-						<li><%= image_tag current_user.image_url, class: "user-image" if current_user %></li>
+						<li><%= image_tag current_user.remote_image_url, class: "user-image" if current_user %></li>
 					<% else %>
 						<li><%= link_to "Log in", new_user_session_path %></li>
 					<% end %>

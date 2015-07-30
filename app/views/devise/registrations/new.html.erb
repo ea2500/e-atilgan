@@ -9,8 +9,13 @@
   </div>
 
   <div class="field">
-    <%= f.label :image_url %><br />
-    <%= f.text_field :image_url, autofocus: true, placeholder: "optional" %>
+    <%= f.label :remote_image_url, "Image url" %><br />
+    <%= f.text_field :remote_image_url, autofocus: true, placeholder: "optional" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image, "or upload image" %>
+    <%= f.file_field :image, placeholder: "optional" %>
   </div>
 
   <div class="field">

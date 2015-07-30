@@ -29,7 +29,7 @@
       <% else %>
         <tr class="<%= cycle('line-odd','line-even') %>">
       <% end %>
-        <td class='img-cell'> <%= image_tag user.image_url, class: "user-image" %></td>
+        <td class='img-cell'> <%= image_tag user.remote_image_url, class: "user-image" %></td>
         <td><%= user.name %></td>
         <% if user_signed_in? and current_user.admin? %>
           <td><%= user.admin? %></td>
