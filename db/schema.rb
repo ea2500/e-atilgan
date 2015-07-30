@@ -11,11 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150730141446) do
+ActiveRecord::Schema.define(version: 20150730150953) do
 
   create_table "documents", force: :cascade do |t|
     t.string   "name"
     t.string   "doc_file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "labs", force: :cascade do |t|
+    t.string   "name"
+    t.string   "college"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
