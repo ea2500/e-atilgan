@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :documents
   delete '/delete_user' => 'manage_users#destroy'
   
   post '/new_user' => 'manage_users#create'
