@@ -17,8 +17,13 @@
   </div>
   <br>
   <div class="field">
-    <%= f.label :doc_file %><br>
+    <%= f.label :doc_file, "Document : #{@document.doc_file.url}" %><br>
     <%= f.file_field :doc_file %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.label :lab_id, "which lab or class?" %><br>
+    <%= f.select :lab_id, Lab::LABS, { include_blank: true } %>
   </div>
   <br>
   <div class="actions">

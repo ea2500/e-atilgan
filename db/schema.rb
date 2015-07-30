@@ -11,14 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150730150953) do
+ActiveRecord::Schema.define(version: 20150730152947) do
 
   create_table "documents", force: :cascade do |t|
     t.string   "name"
     t.string   "doc_file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "lab_id"
   end
+
+  add_index "documents", ["lab_id"], name: "index_documents_on_lab_id"
 
   create_table "labs", force: :cascade do |t|
     t.string   "name"
