@@ -10,16 +10,18 @@
 
 
 
-<h1>Weclome Students... </h1>
 
-<p> This page is designed to facilitate the connectivity of Erdinc Atilgan, Ph.D., with his students</p>
+
 
 <% if user_signed_in? %>
 	
-	<p>Hi <%= current_user.name %>. Please use <%= link_to "| Class/Lab Subscriptions |", labs_url %> link to find your class or lab </p>
+	<p>Hello <strong><%= current_user.name %>! </strong></p>	
 
-<h3> You subscribed to email list of following: </h3>
+<h3> You subscribed to email list of following classes or labs: </h3>
 	<% if current_user.user_labs.count > 0 %>
+
+	<p>Use the class/lab links below to follow the class. There might be some home works, lab manuals or take home exams waiting for you to download then... Ah, do not forget the occasional surprises as well ... Keep in contact... </p>
+
 	<table>
 	  <tbody>
 	    <% current_user.user_labs.each do |user_lab| %>
@@ -30,11 +32,23 @@
 	  </tbody>
 	</table>
 	<% else %>
-		no subscriptions 
+
+		<p>no subscriptions</p>
+
+		<P>To subscribe the email list of a class or lab please use link: <%= link_to "Class/Lab Subscriptions", labs_url %>. </p>
+
 	<% end %>
 
 <% else %>
-	<%= button_to "Students, sign up here", new_user_registration_path, method: :get, class: 'button-signup' %> 
+	<h1>Weclome Students... </h1>
+
+<p> This page is designed to facilitate Dr. Atilgan's connectivity with his students</p>
+<p> Please email him for any concern: <%= link_to "erdinc.atilgan@gmail.com" %> </p>
+
+<p> Once you sign up, you can subscribe to a class email list, and this site will email you when a document related to class activities is available to you for download. Of course, you will also recieve class anouncements and reminders automatically sent to your email.</p>
+
+	<br>
+	<%= button_to "Sign up here", new_user_registration_path, method: :get, class: 'button-signup' %> 
 <% end %>
 
 
