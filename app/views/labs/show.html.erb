@@ -21,6 +21,6 @@
 	<p>currently none</p>
 <% else %>
 	<% @lab.documents.each do |document| %>
-		<%= link_to document.name, document.doc_file.url %> <br><br>
+		<%= link_to document.name, document %> <br><br>
 	<% end %>
 <% end %>

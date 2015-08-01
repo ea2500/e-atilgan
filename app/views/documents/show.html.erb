@@ -1,9 +1,24 @@
-<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Name:</strong>
-  <%= link_to @document.name, @document.doc_file_url %>
+  <%= link_to @document.name, "#" %>
 </p>
+
+<p>
+  <strong>Lab:</strong>
+  <%= @document.lab.name %>
+</p>
+
+<p>
+  <strong>File Name:</strong>
+  <%= @document.filename %>
+</p>
+
+<p>
+  <strong>Content Type:</strong>
+  <%= @document.content_type %>
+</p>
+
 
 <br>
 

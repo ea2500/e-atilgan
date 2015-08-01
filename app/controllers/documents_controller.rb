@@ -11,7 +11,9 @@ class DocumentsController < ApplicationController
 
   # GET /documents/1
   # GET /documents/1.json
-  def show
+  def show # becomes download
+    @document = Document.find(params[:id])
+    send_data @document.data, :filename => @document.filename, :type => @document.content_type
   end
 
   # GET /documents/new
@@ -26,12 +28,24 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-    @document = Document.new(document_params)
+    # puts "*|*|"*10
+    # puts params[:document][:data].original_filename
+    # puts params[:document][:data].content_type
+    # puts document_params[:data].original_filename
+    # puts document_params[:data].content_type
+    # puts "*^*^"*10
+    @document = Document.new
+    @document.name = document_params[:name]
+    @document.lab_id = document_params[:lab_id]
+    @document.data = document_params[:data].read
+    @document.filename = document_params[:data].original_filename
+    @document.content_type = document_params[:data].content_type
+
 
     respond_to do |format|
       if @document.save
-        format.html { redirect_to @document, notice: 'Document was successfully created.' }
-        format.json { render :show, status: :created, location: @document }
+        format.html { redirect_to documents_url, notice: 'Document was successfully created.' }
+        format.json { render :show, status: :created, location: documents_url }
       else
         format.html { render :new }
         format.json { render json: @document.errors, status: :unprocessable_entity }
@@ -44,8 +58,8 @@ class DocumentsController < ApplicationController
   def update
     respond_to do |format|
       if @document.update(document_params)
-        format.html { redirect_to @document, notice: 'Document was successfully updated.' }
-        format.json { render :show, status: :ok, location: @document }
+        format.html { redirect_to documents_url, notice: 'Document was successfully updated.' }
+        format.json { render :show, status: :ok, location: documents_url }
       else
         format.html { render :edit }
         format.json { render json: @document.errors, status: :unprocessable_entity }
@@ -71,7 +85,7 @@ class DocumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:name, :doc_file, :lab_id)
+      params.require(:document).permit(:name, :data, :lab_id)
     end
 
 end
