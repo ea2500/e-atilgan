@@ -38,7 +38,7 @@ class DocumentsController < ApplicationController
     @document.name = document_params[:name]
     @document.lab_id = document_params[:lab_id]
     @document.data = document_params[:data].read
-    @document.filename = document_params[:data].original_filename
+    @document.filename = sanitize_filename(document_params[:data].original_filename)
     @document.content_type = document_params[:data].content_type
 
 
@@ -86,6 +86,13 @@ class DocumentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
       params.require(:document).permit(:name, :data, :lab_id)
+    end
+
+    def sanitize_filename(filename)
+      #get only the filename, not the whole path (from IE)
+      just_filename = File.basename(filename)
+      #replace all non-alphanumeric, underscore or periods with underscores
+      just_filename.gsub(/[^\w\.\-]/, '_')
     end
 
 end

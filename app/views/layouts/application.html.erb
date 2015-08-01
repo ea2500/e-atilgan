@@ -13,7 +13,7 @@
 		<div class="container"> 
 			<%= link_to "E.Atilgan's", root_url, id:'logo' %>
 
-			<%= link_to "Manage Users", users_path, id:'catalog-logo' if user_signed_in? and current_user.admin? %>
+			<%= link_to "Manage Users", users_path, id:'cart-logo' if user_signed_in? and current_user.admin? %>
 			<nav>
 				<ul class="nav navbar-nav navbar-right">
 					<li><%= link_to "HOME", root_url %></li>
