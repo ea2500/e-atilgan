@@ -1,6 +1,35 @@
 <h1>Editing Document</h1>
 
-<%= render 'form' %>
+
+<%= form_for(@document) do |f| %>
+  <% if @document.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@document.errors.count, "error") %> prohibited this document from being saved:</h2>
+
+      <ul>
+      <% @document.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <br>
+  
+  <br>
+  <div class="field">
+    <%= f.label :lab_id, "which lab or class?" %><br>
+    <%= f.select :lab_id, Lab::LABS, { include_blank: true } %>
+  </div>
+  <br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 
 <br>
 

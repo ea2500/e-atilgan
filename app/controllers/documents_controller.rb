@@ -13,7 +13,9 @@ class DocumentsController < ApplicationController
   # GET /documents/1.json
   def show # becomes download
     @document = Document.find(params[:id])
-    send_data @document.data, :filename => @document.filename, :type => @document.content_type
+    send_data @document.data, :filename => @document.filename, 
+                              :type => @document.content_type, 
+                              :disposition => "inline"
   end
 
   # GET /documents/new
@@ -28,12 +30,12 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-    # puts "*|*|"*10
+    # puts "*|*|"*20
     # puts params[:document][:data].original_filename
     # puts params[:document][:data].content_type
     # puts document_params[:data].original_filename
     # puts document_params[:data].content_type
-    # puts "*^*^"*10
+    # puts "*^*^"*20
     @document = Document.new
     @document.name = document_params[:name]
     @document.lab_id = document_params[:lab_id]
@@ -57,7 +59,7 @@ class DocumentsController < ApplicationController
   # PATCH/PUT /documents/1.json
   def update
     respond_to do |format|
-      if @document.update(document_params)
+      if @document.update_attributes(name: document_params[:name], lab_id: document_params[:lab_id])
         format.html { redirect_to documents_url, notice: 'Document was successfully updated.' }
         format.json { render :show, status: :ok, location: documents_url }
       else
