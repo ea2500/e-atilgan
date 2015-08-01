@@ -16,8 +16,7 @@ class DocumentsController < ApplicationController
     # send_data @document.data, :filename => @document.filename, 
     #                           :type => @document.content_type, 
     #                           :disposition => "inline"
-    send_data @document.data, :filename => @document.filename, 
-                              :type => @document.content_type
+    send_data @document.data, :filename => @document.filename, :type => @document.content_type
   end
 
   # GET /documents/new
