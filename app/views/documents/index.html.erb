@@ -21,12 +21,11 @@
       <tr>
         <td><%= link_to document.name, document %></td>
         <td><%= document.lab.name if document.lab %></td>
-        <td><%= document.content_type  %></td>
         <td><%= link_to 'Download', document %></td>
         <% if current_user.admin? %>
           <td><%= link_to 'Edit', edit_document_path(document) %></td>
           <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
+          <td><%= document.content_type  %></td>
         <% end %>
         </tr>
     <% end %>
