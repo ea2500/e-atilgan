@@ -3,12 +3,11 @@ Rails.application.routes.draw do
   resources :user_labs, only: [:index, :create, :destroy]
   resources :labs
   resources :documents
+
+  get '/show_user' => 'manage_users#show'
   delete '/delete_user' => 'manage_users#destroy'
-  
   post '/new_user' => 'manage_users#create'
   get '/new_user' => 'manage_users#new'
-  
-
   get '/edit_user' => 'manage_users#edit'
   put '/edit_user' => 'manage_users#update'
 
