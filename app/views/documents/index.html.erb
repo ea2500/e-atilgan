@@ -19,7 +19,7 @@
   <tbody>
     <% @documents.each do |document| %>
       <tr>
-        <%= image_tag url_for(controller: :documents, action: :show, id: document.id) %>
+        <%#= image_tag url_for(controller: :documents, action: :show, id: document.id) %>
         <td><%= link_to document.name, document %></td>
         <td><%= document.lab.name if document.lab %></td>
         <td><%= link_to 'Download', document %></td>
