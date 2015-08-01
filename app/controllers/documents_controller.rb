@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
   before_action :bounce_non_logged_in_user, only: [:index]
-  before_action :bounce_non_admin_user, only: [:new, :show, :edit, :create, :update, :destroy]
+  before_action :bounce_non_admin_user, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
   # GET /documents
