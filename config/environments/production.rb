@@ -70,7 +70,7 @@ Rails.application.configure do
     domain:               "domain.of.sender.net",
     authentication:       "plain",
     user_name:            "atilgan.apps",
-    password:             "cemomemo",
+    password:             "xxxxxxxx",
     enable_starttls_auto: true
   } 
   config.action_mailer.default_url_options = {host: "e-atilgan.herokuapp.com"}  
