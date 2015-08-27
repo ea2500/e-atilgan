@@ -22,7 +22,7 @@ Rails.application.configure do
     domain:               "domain.of.sender.net",
     authentication:       "plain",
     user_name:            "atilgan.apps",
-    password:             "cemomemo",
+    password:             "xxxxxxxxx",
     enable_starttls_auto: true
   } 
   # host='localhost:3000'
