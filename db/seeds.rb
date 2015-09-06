@@ -14,8 +14,8 @@ Lab.create!(name: "Basic Electronics, Phys XXX", college: "Fairleigh Dickinson U
 
 user = User.create!(name:  "Jim Admin",
              email: "jim@jim.com",
-             password:              "jimmish",
-             password_confirmation: "jimmish",
+             password:              "xxxxxx",
+             password_confirmation: "xxxxxx",
              admin: true,
              confirmed_at: Time.zone.now)
 user.image = Rails.root.join("db/images/JimsLabFace.jpg").open
@@ -24,8 +24,8 @@ user.save!
 
 user = User.create!(name:  "Tim Admin",
              email: "tim@tim.com",
-             password:              "timmish",
-             password_confirmation: "timmish",
+             password:              "xxxxxx",
+             password_confirmation: "xxxxxx",
              admin: true,
              confirmed_at: Time.zone.now)
 user.image = Rails.root.join("db/images/ab.jpg").open
